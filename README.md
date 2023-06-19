@@ -1,6 +1,6 @@
 ### Packet Analyzer - JavaScript
 
-A script that analyzes Tshark/Wireshark packets (JSON format). The project started after I realized you could export packet information from WireShark in JSON format. One of my favorite things to do is working with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
+A script that analyzes Tshark/Wireshark packets (JSON format). The project started after I realized you could export packet information from WireShark in JSON format. One of my favorite things to do is work with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
 
 The script is still a work in progress but currently it extracts the following data:
 
