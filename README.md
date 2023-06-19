@@ -13,9 +13,9 @@ The script is still a work in progress but currently it extracts the following d
 4. TCP & UDP source and destination port numbers
 
 _Initially_, I just planned to just extract various data...but I decided to do a front-end (HTML/CSS) for it as well. This allows you to upload your exported Wireshark JSON where an Express server will parse the data, and respond
-via JSON to the client. _In addition to that_, I creeated a separate Express route that will returns the data to a `.ejs` file. I still need to make it pretty but the data is there!
+via JSON to the client. _In addition to that_, I created a separate Express route that returns the data to the user via an `packet.ejs` file. I still need to make it pretty but the data is there.
 
-**TODO**: Make the application more **robust**, implement better error handling (always trying to get better that), and introduce more data analysis...maybe include other types data. Lately, I've been curious about VOIP technology and telephony development so maybe I'll look into that when I have time...
+**TODO**: Make the application more **robust**, implement better error handling (always trying to get better at error handling), and introduce more data analysis...maybe include other types data. Lately, I've been curious about VOIP technology and telephony development so maybe I'll look into that when I have time...
 
 ## Getting Started
 
