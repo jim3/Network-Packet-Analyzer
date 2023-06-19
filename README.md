@@ -57,23 +57,36 @@ node index.js
 ```json
 {
     "ipAddresses": {
-        "ipSource": {
-            "192.168.0.142": "ip.src",
-            "108.166.149.2": "ip.src",
-            "20.221.80.166": "ip.src",
-            "192.168.0.205": "ip.src"
-        },
-        "ipDestination": {
-            "108.166.149.2": "ip.dst",
-            "192.168.0.142": "ip.dst",
-            "20.221.80.166": "ip.dst",
-            "192.168.0.255": "ip.dst"
-        }
+        "ipSrc": [
+            "192.168.0.208",
+            "108.166.149.2",
+            "34.251.254.157",
+            "173.194.219.127",
+            "108.177.122.127",
+            "3.214.247.192",
+            "108.166.149.3",
+            "64.233.186.127"
+        ],
+        "ipDst": [
+            "192.168.0.114",
+            "224.0.0.251",
+            "108.166.149.2",
+            "192.168.0.208",
+            "192.168.0.3",
+            "192.168.0.65",
+            "192.168.0.71",
+            "34.251.254.157",
+            "108.166.149.3",
+            "173.194.219.127",
+            "108.177.122.127",
+            "64.233.186.127",
+            "142.250.15.127"
+        ]
     },
     "ipDetails": {
         "ipSourceDetails": [
             {
-                "ip": "192.168.0.142",
+                "ip": "192.168.0.208",
                 "country_code": "-",
                 "country_name": "-",
                 "region_name": "-",
@@ -101,36 +114,120 @@ node index.js
                 "is_proxy": false
             },
             {
-                "ip": "20.221.80.166",
-                "country_code": "US",
-                "country_name": "United States of America",
-                "region_name": "Iowa",
-                "city_name": "Des Moines",
-                "latitude": 41.60045,
-                "longitude": -93.609114,
-                "zip_code": "50301",
-                "time_zone": "-05:00",
-                "asn": "8075",
-                "as": "Microsoft Corporation",
+                "ip": "34.251.254.157",
+                "country_code": "IE",
+                "country_name": "Ireland",
+                "region_name": "Dublin",
+                "city_name": "Dublin",
+                "latitude": 53.344149,
+                "longitude": -6.267249,
+                "zip_code": "D8",
+                "time_zone": "+01:00",
+                "asn": "16509",
+                "as": "Amazon.com Inc.",
                 "is_proxy": false
             },
             {
-                "ip": "192.168.0.205",
-                "country_code": "-",
-                "country_name": "-",
-                "region_name": "-",
-                "city_name": "-",
-                "latitude": null,
-                "longitude": null,
-                "zip_code": "-",
-                "time_zone": "-",
-                "asn": "-",
-                "as": "-",
+                "ip": "173.194.219.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
+                "is_proxy": false
+            },
+            {
+                "ip": "108.177.122.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
+                "is_proxy": false
+            },
+            {
+                "ip": "3.214.247.192",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "Virginia",
+                "city_name": "Ashburn",
+                "latitude": 39.039474,
+                "longitude": -77.491809,
+                "zip_code": "20146",
+                "time_zone": "-04:00",
+                "asn": "14618",
+                "as": "Amazon.com Inc.",
+                "is_proxy": false
+            },
+            {
+                "ip": "108.166.149.3",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "New York",
+                "city_name": "New York City",
+                "latitude": 41.353013,
+                "longitude": -74.2637,
+                "zip_code": "10918",
+                "time_zone": "-04:00",
+                "asn": "30036",
+                "as": "Mediacom Communications Corp",
+                "is_proxy": false
+            },
+            {
+                "ip": "64.233.186.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
                 "is_proxy": false
             }
         ],
         "ipDestinationDetails": [
             {
+                "ip": "192.168.0.114",
+                "country_code": "-",
+                "country_name": "-",
+                "region_name": "-",
+                "city_name": "-",
+                "latitude": null,
+                "longitude": null,
+                "zip_code": "-",
+                "time_zone": "-",
+                "asn": "-",
+                "as": "-",
+                "is_proxy": false
+            },
+            {
+                "ip": "224.0.0.251",
+                "country_code": "-",
+                "country_name": "-",
+                "region_name": "-",
+                "city_name": "-",
+                "latitude": null,
+                "longitude": null,
+                "zip_code": "-",
+                "time_zone": "-",
+                "asn": "-",
+                "as": "-",
+                "is_proxy": false
+            },
+            {
                 "ip": "108.166.149.2",
                 "country_code": "US",
                 "country_name": "United States of America",
@@ -145,7 +242,7 @@ node index.js
                 "is_proxy": false
             },
             {
-                "ip": "192.168.0.142",
+                "ip": "192.168.0.208",
                 "country_code": "-",
                 "country_name": "-",
                 "region_name": "-",
@@ -159,59 +256,198 @@ node index.js
                 "is_proxy": false
             },
             {
-                "ip": "20.221.80.166",
+                "ip": "192.168.0.3",
+                "country_code": "-",
+                "country_name": "-",
+                "region_name": "-",
+                "city_name": "-",
+                "latitude": null,
+                "longitude": null,
+                "zip_code": "-",
+                "time_zone": "-",
+                "asn": "-",
+                "as": "-",
+                "is_proxy": false
+            },
+            {
+                "ip": "192.168.0.65",
+                "country_code": "-",
+                "country_name": "-",
+                "region_name": "-",
+                "city_name": "-",
+                "latitude": null,
+                "longitude": null,
+                "zip_code": "-",
+                "time_zone": "-",
+                "asn": "-",
+                "as": "-",
+                "is_proxy": false
+            },
+            {
+                "ip": "192.168.0.71",
+                "country_code": "-",
+                "country_name": "-",
+                "region_name": "-",
+                "city_name": "-",
+                "latitude": null,
+                "longitude": null,
+                "zip_code": "-",
+                "time_zone": "-",
+                "asn": "-",
+                "as": "-",
+                "is_proxy": false
+            },
+            {
+                "ip": "34.251.254.157",
+                "country_code": "IE",
+                "country_name": "Ireland",
+                "region_name": "Dublin",
+                "city_name": "Dublin",
+                "latitude": 53.344149,
+                "longitude": -6.267249,
+                "zip_code": "D8",
+                "time_zone": "+01:00",
+                "asn": "16509",
+                "as": "Amazon.com Inc.",
+                "is_proxy": false
+            },
+            {
+                "ip": "108.166.149.3",
                 "country_code": "US",
                 "country_name": "United States of America",
-                "region_name": "Iowa",
-                "city_name": "Des Moines",
-                "latitude": 41.60045,
-                "longitude": -93.609114,
-                "zip_code": "50301",
-                "time_zone": "-05:00",
-                "asn": "8075",
-                "as": "Microsoft Corporation",
+                "region_name": "New York",
+                "city_name": "New York City",
+                "latitude": 41.353013,
+                "longitude": -74.2637,
+                "zip_code": "10918",
+                "time_zone": "-04:00",
+                "asn": "30036",
+                "as": "Mediacom Communications Corp",
                 "is_proxy": false
             },
             {
-                "ip": "192.168.0.255",
-                "country_code": "-",
-                "country_name": "-",
-                "region_name": "-",
-                "city_name": "-",
-                "latitude": null,
-                "longitude": null,
-                "zip_code": "-",
-                "time_zone": "-",
-                "asn": "-",
-                "as": "-",
+                "ip": "173.194.219.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
+                "is_proxy": false
+            },
+            {
+                "ip": "108.177.122.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
+                "is_proxy": false
+            },
+            {
+                "ip": "64.233.186.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
+                "is_proxy": false
+            },
+            {
+                "ip": "142.250.15.127",
+                "country_code": "US",
+                "country_name": "United States of America",
+                "region_name": "California",
+                "city_name": "Mountain View",
+                "latitude": 37.405992,
+                "longitude": -122.078515,
+                "zip_code": "94043",
+                "time_zone": "-07:00",
+                "asn": "15169",
+                "as": "Google LLC",
                 "is_proxy": false
             }
         ]
     },
     "macAddresses": {
         "macSource": [
+            "00:1e:a6:00:0e:f9",
             "02:10:18:84:63:f3",
             "8c:dc:d4:38:0e:52",
-            "dc:e9:94:02:e7:6d",
-            "fc:f1:36:c7:35:80",
-            "34:17:eb:dc:d2:f9"
+            "28:c8:7a:dc:06:11",
+            "20:f1:9e:2c:10:fa",
+            "cc:6d:a0:2e:d7:59"
         ],
         "macDestination": [
+            "80:f5:03:71:f1:b9",
+            "01:00:5e:00:00:fb",
+            "02:10:18:84:63:f3",
+            "00:1e:a6:00:0e:f9",
+            "28:c8:7a:dc:06:11",
             "33:33:00:00:00:01",
             "33:33:00:00:00:16",
-            "ff:ff:ff:ff:ff:ff",
-            "02:10:18:84:63:f3",
-            "8c:dc:d4:38:0e:52",
-            "33:33:00:00:00:fb"
+            "20:f1:9e:2c:10:fa",
+            "cc:6d:a0:2e:d7:59"
         ]
     },
     "udpPorts": {
-        "udpSource": ["45366", "53", "5353", "51327", "51329"],
-        "udpDestination": ["53", "45366", "5353", "59870"]
+        "udpSource": [
+            "5353",
+            "58682",
+            "53",
+            "58689",
+            "53987",
+            "53985",
+            "53961",
+            "19305",
+            "53962",
+            "53984",
+            "53986"
+        ],
+        "udpDestination": [
+            "5353",
+            "53",
+            "58682",
+            "19305",
+            "53987",
+            "53985",
+            "53961",
+            "53962",
+            "53984",
+            "53986",
+            "58689"
+        ]
     },
     "tcpPorts": {
-        "tcpSource": ["443", "58312"],
-        "tcpDestination": ["58312", "443"]
+        "tcpSource": [
+            "1071",
+            "1067",
+            "443",
+            "1068",
+            "1069",
+            "5916"
+        ],
+        "tcpDestination": [
+            "8009",
+            "7527",
+            "443",
+            "5916",
+            "5395"
+        ]
     }
 }
 ```
