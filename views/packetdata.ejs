@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>File Metadata</title>
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link href="../public/css/style.css" rel="stylesheet" type="text/css" />
+        <style>
+            body {
+                background-color: #090909;
+                color: #fff000;
+            }
+            #results {
+                border: 2px solid magenta;
+                padding: 10px;
+                margin: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Packet Data Results in EJS</h1>
+        <div id="results">
+            <h2>Results</h2>
+            <% if (typeof packetData !== "undefined") { %>
+
+            <p>Source IP Addresses: <%= packetData.ipAddresses.ipSrc %></p>
+            <p>Dst. IP Addresses: <%= packetData.ipAddresses.ipDst%></p>
+
+            <hr />
+
+            <% packetData.ipDetails.ipSourceDetails.forEach((source) => { %>
+            <p>IP Source: <%= source.ip %></p>
+            <p>Country Source: <%= source.country_name %></p>
+            <p>Region: <%= source.region_name %></p>
+            <p>City: <%= source.city_name %></p>
+            <p>Latitude: <%= source.latitude %></p>
+            <p>Longitude: <%= source.longitude %></p>
+            <p>Zip Code: <%= source.zip_code %></p>
+            <p>Time Zone: <%= source.time_zone %></p>
+            <p>ASN: <%= source.asn %></p>
+            <p>ISP: <%= source.as %></p>
+            <p>Is Proxy: <%= source.is_proxy %></p>
+
+            <hr />
+
+            <% }) %> <% packetData.ipDetails.ipDestinationDetails.forEach((destination) => { %>
+            <p>IP Destination: <%= destination.ip %></p>
+            <p>Country Destination: <%= destination.country_name %></p>
+            <p>Region: <%= destination.region_name %></p>
+            <p>City: <%= destination.city_name %></p>
+            <p>Latitude: <%= destination.latitude %></p>
+            <p>Longitude: <%= destination.longitude %></p>
+            <p>Zip Code: <%= destination.zip_code %></p>
+            <p>Time Zone: <%= destination.time_zone %></p>
+            <p>ASN: <%= destination.asn %></p>
+            <p>ISP: <%= destination.as %></p>
+            <p>Is Proxy: <%= destination.is_proxy %></p>
+
+            <hr />
+            <% }) %>
+
+            <p>Mac Addresses: <%= packetData.macAddresses.macSource %></p>
+            <p>UDP Port #'s: <%= packetData.udpPorts.udpSource %></p>
+            <p>TCP Port #'s: <%= packetData.tcpPorts.tcpDestination %></p>
+            <% } %>
+        </div>
+    </body>
+</html>
