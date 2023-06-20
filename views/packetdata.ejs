@@ -5,9 +5,11 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link href="../public/css/style.css" rel="stylesheet" type="text/css" />
         <style>
+            html,
             body {
-                background-color: #090909;
+                background-color: #141414;
                 color: #fff000;
+                margin-top: auto;
             }
             #results {
                 border: 2px solid magenta;
@@ -18,9 +20,8 @@
     </head>
 
     <body>
-        <h1>Packet Data Results in EJS</h1>
+        <h1>Results</h1>
         <div id="results">
-            <h2>Results</h2>
             <% if (typeof packetData !== "undefined") { %>
 
             <p>Source IP Addresses: <%= packetData.ipAddresses.ipSrc %></p>
@@ -43,7 +44,8 @@
 
             <hr />
 
-            <% }) %> <% packetData.ipDetails.ipDestinationDetails.forEach((destination) => { %>
+            <% }) %> <% packetData.ipDetails.ipDestinationDetails.forEach((destination) =>
+            { %>
             <p>IP Destination: <%= destination.ip %></p>
             <p>Country Destination: <%= destination.country_name %></p>
             <p>Region: <%= destination.region_name %></p>
