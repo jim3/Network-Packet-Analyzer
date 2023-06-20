@@ -24,8 +24,8 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (set) =>
-                set.hasOwnProperty("_source") && set._source.layers.hasOwnProperty("ip")
+            (e) =>
+                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip")
         );
 
         const ipSrcSet = new Set();
@@ -87,16 +87,16 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (set) =>
-                set.hasOwnProperty("_source") && set._source.layers.hasOwnProperty("eth")
+            (e) =>
+                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth")
         );
 
         const macSourceSet = new Set();
         const macDestinationSet = new Set();
 
-        filteredSets.forEach((set) => {
-            const macSource = set._source.layers.eth["eth.src"];
-            const macDestination = set._source.layers.eth["eth.dst"];
+        filteredSets.forEach((e) => {
+            const macSource = e._source.layers.eth["eth.src"];
+            const macDestination = e._source.layers.eth["eth.dst"];
 
             if (macSource) {
                 macSourceSet.add(macSource);
@@ -126,16 +126,16 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (set) =>
-                set.hasOwnProperty("_source") && set._source.layers.hasOwnProperty("udp")
+            (e) =>
+                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp")
         );
 
         const udpSourceSet = new Set();
         const udpDestinationSet = new Set();
 
-        filteredSets.forEach((set) => {
-            const udpSource = set._source.layers.udp["udp.srcport"];
-            const udpDestination = set._source.layers.udp["udp.dstport"];
+        filteredSets.forEach((e) => {
+            const udpSource = e._source.layers.udp["udp.srcport"];
+            const udpDestination = e._source.layers.udp["udp.dstport"];
 
             if (udpSource) {
                 udpSourceSet.add(udpSource);
@@ -165,16 +165,16 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (set) =>
-                set.hasOwnProperty("_source") && set._source.layers.hasOwnProperty("tcp")
+            (e) =>
+                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp")
         );
 
         const tcpSourceSet = new Set();
         const tcpDestinationSet = new Set();
 
-        filteredSets.forEach((set) => {
-            const tcpSource = set._source.layers.tcp["tcp.srcport"];
-            const tcpDestination = set._source.layers.tcp["tcp.dstport"];
+        filteredSets.forEach((e) => {
+            const tcpSource = e._source.layers.tcp["tcp.srcport"];
+            const tcpDestination = e._source.layers.tcp["tcp.dstport"];
 
             if (tcpSource) {
                 tcpSourceSet.add(tcpSource);
