@@ -1,0 +1,64 @@
+html,
+body {
+    background-color: #6c6b6a;
+    color: #500080;
+}
+h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* ------------------------------------------ */
+
+caption {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    width: 100px;
+    background-color: #fff000;
+    color: #141414;
+    font-weight: bold;
+}
+
+#ipDetails table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+}
+
+th {
+    background-color: #fff000;
+    color: #141414;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+tr {
+    /* background-color: #141414; */
+    background-color: #868584;
+    color: #fff000;
+}
+
+td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    border: 1px solid #ddd;
+}
+caption {
+    margin-bottom: 10px;
+    background-color: #fff000;
+    color: #141414;
+    font-weight: bold;
+}
+
+/* ------------------------------------------ */
+
+#ipAddress table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+    background-color: red;
+}
