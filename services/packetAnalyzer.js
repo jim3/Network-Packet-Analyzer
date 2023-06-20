@@ -24,8 +24,7 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (e) =>
-                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip")
+            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip")
         );
 
         const ipSrcSet = new Set();
@@ -87,8 +86,7 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (e) =>
-                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth")
+            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth")
         );
 
         const macSourceSet = new Set();
@@ -126,8 +124,7 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         const filteredSets = data.filter(
-            (e) =>
-                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp")
+            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp")
         );
 
         const udpSourceSet = new Set();
@@ -164,14 +161,16 @@ class PacketAnalyzer {
         data = JSON.parse(data);
         data = Object.keys(data).map((key) => data[key]);
 
+        // filter out packets that do not have tcp layer
         const filteredSets = data.filter(
-            (e) =>
-                e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp")
+            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp")
         );
 
+        // create sets to remove the duplicates from the arrays
         const tcpSourceSet = new Set();
         const tcpDestinationSet = new Set();
 
+        // add tcp ports to sets
         filteredSets.forEach((e) => {
             const tcpSource = e._source.layers.tcp["tcp.srcport"];
             const tcpDestination = e._source.layers.tcp["tcp.dstport"];
@@ -184,7 +183,8 @@ class PacketAnalyzer {
                 tcpDestinationSet.add(tcpDestination);
             }
         });
-
+        
+        // convert sets to arrays so you can iterate over them (who wants to iterate over a set?)
         const tcpSourceArray = Array.from(tcpSourceSet);
         const tcpDestinationArray = Array.from(tcpDestinationSet);
 
