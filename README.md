@@ -26,7 +26,7 @@ These instructions will get you a copy of the project up and running on your loc
 Clone the repo
 
 ```bash
-git clone https://github.com/jim3/Packet-Analyzer.git
+git clone https://github.com/jim3/Network-Packet-Analyzer.git
 ```
 
 Install dependencies
