@@ -1,8 +1,9 @@
 ### Network Packet Analyzer (Wireshark/TShark)
 
-A script that analyzes Tshark/Wireshark packets (JSON format). The project started after I realized you could export packet information from WireShark in JSON format. One of my favorite things to do is work with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
+An app that analyzes exported Wireshark packets in JSON format [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). The project started after I realized you could export packet information from WireShark in JSON format.
+One of my favorite things to do lately is work with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
 
-The script is still a work in progress but currently it extracts the following data:
+It's still a work in progress but currently it extracts the following data:
 
 1. Source & Destination IP addresses
 
@@ -12,17 +13,15 @@ The script is still a work in progress but currently it extracts the following d
 
 4. TCP & UDP source and destination port numbers
 
-_Initially_, I just planned to just extract various data...but I decided to do a front-end (HTML/CSS) for it as well. This allows you to upload your exported Wireshark JSON where an Express server will parse the data, and respond
-via JSON to the client. _In addition to that_, I created a separate Express route that returns the data to the user via an `packet.ejs` file. I still need to make it pretty but the data is there.
+I created a front-end for the app that allows you to upload your exported file. The server will parse the data, extract various data from the file and respond back to the client via JSON. _In addition to that_, I created a separate Express route that returns the data to the user in table format. I used EJS to render the table on the client side. It ain't pretty but that wasn't the goal. The goal was to give the user the option to view the data in JSON or table format. I wasn't sure if it was worth the time to do a table but now i do as it does give you a better view, particularly the IP details. I could do a lot more on the front-end but honestly, I want to:
 
-**TODO**: Overall, I need to improve the code, make the application more **robust** , implement better error handling (...always trying to improve my error handling) and introduce more data analysis...
+**TODO**: Improve the the back-end first, mainly the actual program that parses the data. I want to make it more robust and add more data analysis. I'm also thinking about adding a database to store the data. I'm not sure if that's necessary but I'm thinking about it.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. If you want to use this project as a template for your own project, you can fork it by clicking the Fork button in the upper right corner of this page. I invite more experienced developers to take this simple project and make it better.
+These instructions will get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you. :)
 
-To get started, you will need to install [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). I use nvm to manage my Node.js versions. You can find more information 
-about nvm [here](https://github.com/nvm-sh/nvm). Once you have Node.js and npm installed, you can clone the repo and install the dependencies. In order to run the script, you will need to have a JSON file exported from Wireshark. You can find more information about exporting packets from Wireshark [here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). Lastly, in order to make the API calls for the ip address details I used [ip2location.io](https://www.ip2location.io). You can find more information about the API [here](https://www.ip2location.io/ip2location-documentation). But you can use whatever API you want.
+To get the ip address location details I used [ip2location.io](https://www.ip2location.io). But you can use whatever API you want. I just liked the simplicity of ip2location.io.
 
 ### Installation
 
@@ -45,6 +44,10 @@ Run the script
 ```bash
 node index.js
 ```
+
+Open your browser and go to:
+
+`http://localhost:3000` and `http://localhost:3000/api/packetdata` to view the data in table format once you've uploaded your file.
 
 ## Built With
 
