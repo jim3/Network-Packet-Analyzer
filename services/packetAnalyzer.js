@@ -50,7 +50,6 @@ class PacketAnalyzer {
     // ------------------------- IP Details ------------------------- //
 
     async ipDetails(data) {
-        // console.log(data);
         const ipSourceDetails = [];
         const ipDestinationDetails = [];
 
@@ -205,7 +204,6 @@ class PacketAnalyzer {
         }
         try {
             const ipAddresses = await this.ipAddresses(filePath);
-            // console.log(ipAddresses);
             const ipDetails = await this.ipDetails(ipAddresses);
             const macAddresses = await this.macAddresses(filePath);
             const udpPorts = await this.udpPorts(filePath);
