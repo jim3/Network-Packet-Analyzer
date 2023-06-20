@@ -21,6 +21,9 @@ via JSON to the client. _In addition to that_, I created a separate Express rout
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. If you want to use this project as a template for your own project, you can fork it by clicking the Fork button in the upper right corner of this page. I invite more experienced developers to take this simple project and make it better.
 
+To get started, you will need to install [Node.js](https://nodejs.org/en/) and [npm](https://www.npmjs.com/). I use nvm to manage my Node.js versions. You can find more information 
+about nvm [here](https://github.com/nvm-sh/nvm). Once you have Node.js and npm installed, you can clone the repo and install the dependencies. In order to run the script, you will need to have a JSON file exported from Wireshark. You can find more information about exporting packets from Wireshark [here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). Lastly, in order to make the API calls for the ip address details I used [ip2location.io](https://www.ip2location.io). You can find more information about the API [here](https://www.ip2location.io/ip2location-documentation). But you can use whatever API you want.
+
 ### Installation
 
 Clone the repo
@@ -433,21 +436,8 @@ node index.js
         ]
     },
     "tcpPorts": {
-        "tcpSource": [
-            "1071",
-            "1067",
-            "443",
-            "1068",
-            "1069",
-            "5916"
-        ],
-        "tcpDestination": [
-            "8009",
-            "7527",
-            "443",
-            "5916",
-            "5395"
-        ]
+        "tcpSource": ["1071", "1067", "443", "1068", "1069", "5916"],
+        "tcpDestination": ["8009", "7527", "443", "5916", "5395"]
     }
 }
 ```
