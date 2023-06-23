@@ -12,17 +12,16 @@ An app that analyzes exported Wireshark packets in JSON format. The initial idea
 
 The `/` page is an HTML form for your to upload your exported json file. The server will parse the data, extract and respond back to the client via JSON. _In addition to that_, I created a separate Express route `/packetdata` that responds to the client in html table format. Initially, I wanted to use vanilla JavaScript and DOM manipulation to render the data to the table but I ended up using EJS instead and happy that I did. In my opinion, I've discovered rendering on server side is way more efficient (faster to develop things), and most definitely easier, than the client-side because the browser will always be locked down, mostly because of security reasons.
 
-**TODO**: Improve the the back-end first, mainly the actual program that parses the data. I want to make it more robust, improve error handling and provide better data analysis/insight. I may add a database to store the data. It's not necessary but I need to practice.
+**TODO**: Overall, improve the code and make it more robust (better error handling, provide better data analysis/insight...etc..). I may add a MongoDB database to store the data. It's not necessary but I need to practice.
+
+> **Note**
+> To get a visual idea of the output, check out the screenshots and example JSON at the bottom of the README.md
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you. :)
+These instructions will get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you. 
 
 To get the ip address location details I used [ip2location.io](https://www.ip2location.io). But you can use whatever API you want. I just liked the simplicity of ip2location.io.
-
-> **Note**
-> To get visual idea of the output, check out the screenshots and example JSON at the bottom of the README.md
-
 
 ### Installation
 
@@ -48,7 +47,7 @@ node index.js
 
 Open your browser and go to:
 
-`http://localhost:3000` and `http://localhost:3000/api/packetdata` to view the data in table format once you've uploaded your file.
+`http://localhost:3000` to upload your file and `http://localhost:3000/api/packetdata` to view the data in table format once the data is rendered.
 
 ## Built With
 
