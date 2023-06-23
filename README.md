@@ -58,6 +58,20 @@ Open your browser and go to:
 -   [JavaScript](https://learnjavascript.online/) - Programming language
 -   [Visual Studio Code](https://code.visualstudio.com/) - Code editor
 
+
+### Screenshot of table format
+
+---
+
+![01](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/8abfdeea-b51f-42e0-9562-ea7b3b30a944)
+
+
+---
+
+![02](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/18be6766-0d2b-4461-be61-7394f5057bf3)
+
+
+
 ## Example JSON Output
 
 ```json
@@ -444,15 +458,4 @@ Open your browser and go to:
     }
 }
 ```
-
-### Screenshot of table format
-
----
-
-![01](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/8abfdeea-b51f-42e0-9562-ea7b3b30a944)
-
-
----
-
-![02](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/18be6766-0d2b-4461-be61-7394f5057bf3)
 
