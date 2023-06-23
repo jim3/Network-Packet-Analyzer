@@ -25,7 +25,6 @@ To get the ip address location details I used [ip2location.io](https://www.ip2lo
 
 #### **Check out the screenshots and example JSON at the bottom 👇🏻 of the README.md**
 
----
 
 ### Installation
 
