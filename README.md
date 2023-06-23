@@ -23,6 +23,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 To get the ip address location details I used [ip2location.io](https://www.ip2location.io). But you can use whatever API you want. I just liked the simplicity of ip2location.io.
 
+**Check out the screenshots and example JSON at the bottom 👇🏻 of the README.md**
+
 ### Installation
 
 Clone the repo
@@ -444,3 +446,15 @@ Open your browser and go to:
     }
 }
 ```
+
+### Screenshot of table format
+
+---
+
+![01](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/8abfdeea-b51f-42e0-9562-ea7b3b30a944)
+
+
+---
+
+![02](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/18be6766-0d2b-4461-be61-7394f5057bf3)
+
