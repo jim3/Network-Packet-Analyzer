@@ -1,12 +1,10 @@
 ### Network Packet Analyzer (Wireshark/TShark)
 
-An app that analyzes exported Wireshark packets in JSON format [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). The project started after I realized you could export packet information from WireShark in JSON format. Lately, one of my favorite things to do, is to work with JSON. So I wanted to see if I could use the data to gain some insights into the network traffic of my home network.
+An app that analyzes exported Wireshark packets in JSON format. The initial idea started after I discovered you could export packet information from WireShark in JSON format [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). Lately, one of my favorite things to do is to work with JSON. I really enjoy figuring out how to get useful information out of it. So I wanted to see if I could use the data to gain some insights into the network traffic of my home network. It's still very much a work-in-progress but currently it extracts the following data and displays it in JSON format, as well as, in  html table format (via EJS).
 
-It's still a work in progress but currently it extracts the following data:
+1. Source & Destination IP details (city, state, country)
 
-1. Source & Destination IP addresses
-
-2. Source & Destination IP details (city, state, country)
+2. Source & Destination IP addresses
 
 3. Source & Destination MAC addresses
 
