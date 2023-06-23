@@ -10,9 +10,9 @@ An app that analyzes exported Wireshark packets in JSON format. The initial idea
 
 4. TCP & UDP source and destination port numbers
 
-I created a front-end for the app that allows you to upload your exported file. The server will parse the data, extract various data from the file and respond back to the client via JSON. _In addition to that_, I created a separate Express route that returns the data to the user in table format. I used EJS to render the table on the client side. It ain't pretty but that wasn't the goal. The goal was to give the user the option to view the data in JSON or table format. I wasn't sure if it was worth the time to do a table but now i do as it does give you a better view, particularly the IP details. I could do a lot more on the front-end but honestly, I want to:
+The `/` page is an HTML form for your to upload your exported json file. The server will parse the data, extract and respond back to the client via JSON. _In addition to that_, I created a separate Express route `/packetdata` that responds to the client in html table format. Initially, I wanted to use vanilla JavaScript and DOM manipulation to render the data to the table but I ended up using EJS instead and happy that I did. In my opinion, I've discovered rendering on server side is way more efficient (faster to develop things), and most definitely easier, than the client-side because the browser will always be locked down, mostly because of security reasons.
 
-**TODO**: Improve the the back-end first, mainly the actual program that parses the data. I want to make it more robust and add more data analysis. I'm also thinking about adding a database to store the data. I'm not sure if that's necessary but I'm thinking about it.
+**TODO**: Improve the the back-end first, mainly the actual program that parses the data. I want to make it more robust, improve error handling and provide better data analysis/insight. I may add a database to store the data. It's not necessary but I need to practice.
 
 ## Getting Started
 
