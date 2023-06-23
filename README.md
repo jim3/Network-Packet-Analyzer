@@ -10,7 +10,7 @@ An app that analyzes exported Wireshark packets in JSON format. The initial idea
 
 4. TCP & UDP source and destination port numbers
 
-The `/` page is an HTML form where you upload your exported json file. The server will parse the data, extract and respond back to the client via JSON. _In addition to that_, I created a separate Express route `/packetdata` that responds to the client in html table format. Initially, I wanted to use vanilla JavaScript and DOM manipulation to render the data to the table but I ended up using EJS instead and happy that I did. In my opinion, I've discovered rendering on server side is way more efficient (faster to develop things), and most definitely easier, than the client-side because the browser will always be locked down, mostly because of security reasons.
+The `/` page is an HTML form where you upload your exported json file. The server will parse the data, extract and respond back to the client via JSON. _In addition to that_, I created a separate Express route `/packetdata` that responds to the client in html table format. Initially, I wanted to use vanilla JavaScript and DOM manipulation to render the data to the table but I ended up using EJS instead and happy that I did. In my opinion, I've discovered rendering on the server side is way more efficient (faster to develop things), and most definitely easier, than the client-side because the browser will always be locked down, mostly because of security reasons.
 
 **TODO**: Overall, improve the code and make it more robust (better error handling, provide better data analysis/insight...etc..). I may add a MongoDB database to store the data. It's not necessary but I need to practice.
 
