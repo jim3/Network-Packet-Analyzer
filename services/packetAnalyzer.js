@@ -4,7 +4,6 @@ dotenv.config();
 
 class PacketAnalyzer {
     constructor() {}
-
     async readPackets() {
         const data = await this.writeData();
         data = await fs.readFile(data, "utf-8");
@@ -183,7 +182,7 @@ class PacketAnalyzer {
                 tcpDestinationSet.add(tcpDestination);
             }
         });
-        
+
         // convert sets to arrays so you can iterate over them (who wants to iterate over a set?)
         const tcpSourceArray = Array.from(tcpSourceSet);
         const tcpDestinationArray = Array.from(tcpDestinationSet);
@@ -196,7 +195,7 @@ class PacketAnalyzer {
         return tcpPorts;
     }
 
-    // ------------------------- Write Data ------------------------- //
+    // ------------------------- Upload Packet File ------------------------- //
 
     async analyzePacketFile(filePath) {
         if (!filePath) {
@@ -204,10 +203,10 @@ class PacketAnalyzer {
         }
         try {
             const ipAddresses = await this.ipAddresses(filePath);
-            const ipDetails = await this.ipDetails(ipAddresses);
             const macAddresses = await this.macAddresses(filePath);
             const udpPorts = await this.udpPorts(filePath);
             const tcpPorts = await this.tcpPorts(filePath);
+            const ipDetails = await this.ipDetails(ipAddresses);
 
             const packetData = {
                 ipAddresses,
