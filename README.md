@@ -1,7 +1,6 @@
 ### Network Packet Analyzer (Wireshark/TShark)
 
-An app that analyzes exported Wireshark packets in JSON format [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). The project started after I realized you could export packet information from WireShark in JSON format.
-One of my favorite things to do lately is work with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
+An app that analyzes exported Wireshark packets in JSON format [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). The project started after I realized you could export packet information from WireShark in JSON format. One of my favorite things to do lately is work with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
 
 It's still a work in progress but currently it extracts the following data:
 
@@ -13,9 +12,18 @@ It's still a work in progress but currently it extracts the following data:
 
 4. TCP & UDP source and destination port numbers
 
-I created a front-end for the app that allows you to upload your exported file. The server will parse the data, extract various data from the file and respond back to the client via JSON. _In addition to that_, I created a separate Express route that returns the data to the user in table format. I used EJS to render the table on the client side. It ain't pretty but that wasn't the goal. The goal was to give the user the option to view the data in JSON or table format. I wasn't sure if it was worth the time to do a table but now i do as it does give you a better view, particularly the IP details. I could do a lot more on the front-end but honestly, I want to:
+There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse the data, extract various data from the file and respond back to the client via JSON. There is also a separate endpoint at `/api/packetdata` that returns the data in a html table. I am not sure that this portion of the project will stay, it was just something temporary I wanted to do to see the data in a table format. Lastly, it has the ability to save the results to your [MongoDB Atlas](https://www.mongodb.com/atlas) database. I used Mongoose.js to save the results to the collection (still a lot to learn on that end). This portion of the project is probably where I plan to focus on for now. The ability to take the data and save it to a database is important to me. I want to be able to analyze the data over time and see how it changes, query the data and just see what I can learn from it without having to parse the data every time.
 
-**TODO**: Improve the the back-end first, mainly the actual program that parses the data. I want to make it more robust and add more data analysis. I'm also thinking about adding a database to store the data. I'm not sure if that's necessary but I'm thinking about it.
+**TODO**: Improve the code, mainly the actual program that parses the data. I want to make it more robust and add more data analysis. ~~I'm also thinking about adding a database to store the data~~. I'm not sure if that's necessary but I'm thinking about it.
+
+### Tech Stack
+
+-   Node.js
+-   Express.js
+-   MongoDB
+-   Mongoose.js
+-   JavaScript
+-   EJS
 
 ## Getting Started
 
@@ -411,19 +419,7 @@ Open your browser and go to:
         ]
     },
     "udpPorts": {
-        "udpSource": [
-            "5353",
-            "58682",
-            "53",
-            "58689",
-            "53987",
-            "53985",
-            "53961",
-            "19305",
-            "53962",
-            "53984",
-            "53986"
-        ],
+        "udpSource": ["5353", "58682", "53", "58689", "53987", "53985", "53961", "19305", "53962", "53984", "53986"],
         "udpDestination": [
             "5353",
             "53",
