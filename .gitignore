@@ -127,3 +127,4 @@ dist
 .env
 data/packet_data.json
 .env
+.env
