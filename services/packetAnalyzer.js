@@ -1,6 +1,7 @@
 const fs = require("fs/promises");
 const dotenv = require("dotenv");
-dotenv.config();
+
+dotenv.config(); // load environment variables from .env file
 
 class PacketAnalyzer {
     constructor() {}
@@ -195,7 +196,7 @@ class PacketAnalyzer {
         return tcpPorts;
     }
 
-    // ------------------------- Upload Packet File ------------------------- //
+    // ------------------------- Insert into Database ------------------------- //
 
     async analyzePacketFile(filePath) {
         if (!filePath) {
@@ -216,7 +217,7 @@ class PacketAnalyzer {
                 tcpPorts,
             };
 
-            this.writeData(packetData); // (*) write data to file for later use
+            this.writeData(packetData); // (*) write data
             return packetData;
         } catch (error) {
             throw new Error("FAIL!!! Error analyzing packet file");
