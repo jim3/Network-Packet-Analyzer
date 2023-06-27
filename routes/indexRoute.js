@@ -27,9 +27,17 @@ router.get("/", async (req, res) => {
     res.render("index", { title: "Home" });
 });
 
+// Endpoint for the HTML table
+router.get("/api/packetdata", async (req, res) => {
+    const packet_data = require("../data/packet_data.json"); // grab file & use it for rendering
+    res.render("packetdata", {
+        packetData: packet_data,
+    });
+});
+
 // ----------------------------------------------------- //
 
-// Creates a new document in the database (collection: packet)
+// Creates a new document in the database
 const createPacket = async (analysisResult) => {
     const { ipAddresses, ipDetails, macAddresses, udpPorts, tcpPorts } = analysisResult;
     Packet.create({ ipAddresses, ipDetails, macAddresses, udpPorts, tcpPorts }).then((packet) => {
