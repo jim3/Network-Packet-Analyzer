@@ -11,7 +11,7 @@ An app that analyzes exported Wireshark packets in JSON format [see here](https:
 
 4. TCP & UDP source and destination port numbers
 
-There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse and extract various data from the file and respond back to the client via JSON. Another endpoint located at `/api/packetdata` allows you to see the results in HTML table format, I used EJS to render the data. See examples of both at the bottom of the README.md [Link](## Example HTNL Table Output)
+There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse and extract various data from the file and respond back to the client via JSON. Another endpoint located at `/api/packetdata` allows you to see the results in HTML table format, I used EJS to render the data. See examples of both at the bottom of the README.md
 
 In addition to the above, I included a way to save the results to a database: [MongoDB Atlas](https://www.mongodb.com/atlas). From here on out, I plan to focus exclusively on the database portion of the project and improving the code. I may implement nice chart to display the data but it is *low priority* and *only* when I have the free time.
 
