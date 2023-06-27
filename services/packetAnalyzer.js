@@ -5,6 +5,12 @@ dotenv.config(); // load environment variables from .env file
 
 class PacketAnalyzer {
     constructor() {}
+
+    async writeData(data) {
+        data = await fs.writeFile("./data/packet_data.json", JSON.stringify(data));
+        return data;
+    }
+
     // ------------------------- IP Addresses ------------------------- //
 
     async ipAddresses(data) {
@@ -205,7 +211,8 @@ class PacketAnalyzer {
                 udpPorts,
                 tcpPorts,
             };
-
+            
+            this.writeData(packetData); // write results to a file for the table
             return packetData;
         } catch (error) {
             throw new Error("FAIL!!! Error analyzing packet file");
