@@ -1,7 +1,6 @@
+### JSON Packet Analyzer (Wireshark)
 
-### Network Packet Analyzer (Wireshark/TShark)
-
-An app that analyzes exported Wireshark packets in JSON format [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). The project started after I realized you could export packet information from WireShark in JSON format. One of my favorite things to do lately is work with JSON so I wanted to see if I could use the data to gain insights into the network traffic of my home network.
+The application analyzes exported Wireshark packets in JSON format. [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). Currently, it extracts the following:
 
 1. Source & Destination IP details (city, state, country)
 
@@ -11,19 +10,20 @@ An app that analyzes exported Wireshark packets in JSON format [see here](https:
 
 4. TCP & UDP source and destination port numbers
 
-There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse and extract various data from the file and respond back to the client via JSON. Another endpoint located at `/api/packetdata` allows you to see the results in HTML table format, I used EJS to render the data. See examples of both at the bottom of the README.md
+There is an HTML front-end (form) for the app at the root endpoint `/`. This allows you upload your exported json file. The server extracts the data and responds back to the client with JSON. I created another endpoint located at `/api/packetdata` that displays the results in HTML table format. 
 
-In addition to the above, I included a way to save the results to a database: [MongoDB Atlas](https://www.mongodb.com/atlas). From here on out, I plan to focus exclusively on the database portion of the project and improving the code. I may implement nice chart to display the data but it is *low priority* and *only* when I have the free time.
+[MongoDB Atlas](https://www.mongodb.com/atlas) is how the table gets populated. It reads from the last packet in the collection and Express renders it to the `/api/packetdata` endpoint. See examples of it at the bottom of the README.md
+
+From here on out, I mainly want to improve the code and focus on database portion of the project. This project is a work-in-progress so it's not stable...and honestly, this is more of a learning exercise than anything. 
 
 ## Getting Started
 
 These instructions will *hopefully* get you a copy of the project up and running on your local machine:
 
-1. For Windows 10 it should be as easy as `npm install` and fille in your `.env`, then run the server `nodemon index.js`
-2. I can almost say the same for Debian based Linux but there may be an issue with the `writeData(data)` function and the encoding. As soon as I find time I'll fix it. You can take that portion out (or fix it) and it should work fine.
+Ideally, it should be as easy as issuing `npm install`, filling in your `.env` file and `nodemon index.js` It's been tested on Linux (Debian based) and Windows 10.
 
--   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file. `API_KEY=<your-api-key>`
--   Info on how to get your connection string is here: [MongoDB Connection String (https://www.mongodb.com/docs/guides/atlas/connection-string) Place your connection sting inside the .env file as well
+-   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API.
+-   For MongoDB, Place your connection string inside the `.env` file as well. There is an `env.example` file as well.
 
 ### Installation
 
@@ -44,12 +44,14 @@ npm install
 Run the script
 
 ```bash
-node index.js
+nodemon index.js
 ```
 
 Open your browser and go to:
 
 `http://localhost:3000` to upload your file
+
+Vist `http://localhost:3000/api/packetdata` for the table.
 
 ## Built With
 
