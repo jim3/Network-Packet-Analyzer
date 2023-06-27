@@ -26,15 +26,11 @@ There is a front-end for the app at the root endpoint `/`. This allows you to up
 
 These instructions will hopefully get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you.
 
--   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file.
+-   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file. `API_KEY=<your-api-key>`
+-   To be able to write to the database place your conncection string place the following in your `.env file, substituting your username and password:<br>
+    `MONGO_DB_CONNECTION_STRING=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.hi0ayas.mongodb.net/?retryWrites=true&w=majority>`
+-   Info on how to get your connection string is here: [MongoDB Connection String (https://www.mongodb.com/docs/guides/atlas/connection-string)
 
-`API_KEY=<your-api-key>`
-
--   To be able to write to the database you will need to create a `.env` file in the root directory and add your MongoDB Atlas connection string. Info on how to get your connection string is here: [MongoDB Connection String](https://www.mongodb.com/docs/guides/atlas/connection-string)
-
-Place the following in your `.env file, substituting your username and password:
-
-`MONGO_DB_CONNECTION_STRING=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.hi0ayas.mongodb.net/?retryWrites=true&w=majority>`
 
 ### Installation
 
