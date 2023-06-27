@@ -17,7 +17,7 @@ From here on out, I plan to focus exclusively on the database portion of the pro
 
 ## Getting Started
 
-These instructions will hopefully get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you.
+These instructions will *hopefully* get you a copy of the project up and running on your local machine (Debian-based Linux or Windows 10)
 
 -   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file. `API_KEY=<your-api-key>`
 -   Info on how to get your connection string is here: [MongoDB Connection String (https://www.mongodb.com/docs/guides/atlas/connection-string) Place your connection sting inside the .env file as well
