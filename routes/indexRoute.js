@@ -27,12 +27,21 @@ router.get("/", async (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-// Endpoint for the HTML table
+// ----------------------------------------------------- //
+
+// Reads the latest packet data from the database and renders it
 router.get("/api/packetdata", async (req, res) => {
-    const packet_data = require("../data/packet_data.json"); // grab file & use it for rendering
-    res.render("packetdata", {
-        packetData: packet_data,
-    });
+    try {
+        const packetData = await Packet.find().sort({ _id: -1 }).limit(1);
+        console.log(packetData);
+
+        res.render("packetdata", {
+            packetData: packetData[0],
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "An error occurred while retrieving packet data" });
+    }
 });
 
 // ----------------------------------------------------- //
