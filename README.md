@@ -18,8 +18,9 @@ In addition to the above, I included a way to save the results to a database: [M
 ## Getting Started
 
 These instructions will *hopefully* get you a copy of the project up and running on your local machine:
-1. Windows 10 is your best route if you want it to work with no issues.
-2. I can almost say the same for Debian based Linux but there may be an issue with the `writeData(data)` function and the encoding. As soon as I find time I'll fix it. You can take that portion out and it should work fine.
+
+1. For Windows 10 it should be as easy as `npm install` and fille in your `.env`, then run the server `nodemon index.js`
+2. I can almost say the same for Debian based Linux but there may be an issue with the `writeData(data)` function and the encoding. As soon as I find time I'll fix it. You can take that portion out (or fix it) and it should work fine.
 
 -   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file. `API_KEY=<your-api-key>`
 -   Info on how to get your connection string is here: [MongoDB Connection String (https://www.mongodb.com/docs/guides/atlas/connection-string) Place your connection sting inside the .env file as well
