@@ -1,6 +1,6 @@
 ### JSON Packet Analyzer (Wireshark)
 
-The application analyzes exported Wireshark packets in JSON format. [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html). Currently, it extracts the following:
+The application analyzes exported Wireshark packets in JSON format. [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html) Currently, it extracts the following:
 
 1. Source & Destination IP details (city, state, country)
 
