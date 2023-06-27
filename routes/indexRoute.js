@@ -23,22 +23,14 @@ mongoose
 
 // ------------------------- GET ------------------------- //
 
-// Renders the upload page
+// Render the upload page
 router.get("/", async (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-// Endpoint that shows an html table of the results
-router.get("/api/packetdata", async (req, res) => {
-    const packet_data = require("../data/packet_data.json"); // grab file & use it for rendering
-    res.render("packetdata", {
-        packetData: packet_data,
-    });
-});
-
 // ----------------------------------------------------- //
 
-// Creates a new packet in the database (collection: packets)
+// Creates a new document in the database (collection: packet)
 const createPacket = async (analysisResult) => {
     const { ipAddresses, ipDetails, macAddresses, udpPorts, tcpPorts } = analysisResult;
     Packet.create({ ipAddresses, ipDetails, macAddresses, udpPorts, tcpPorts }).then((packet) => {
