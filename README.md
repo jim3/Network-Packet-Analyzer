@@ -41,6 +41,9 @@ npm install
 
 ### Usage
 
+1. Capture some Wireshark packets, use a capture filter for better results (ex: `host <YourIP> and not broadcast and not multicast and ip`)
+2. Stop Wireshark capture then, `File > Export Packet Dissections > As JSON`
+
 Run the script
 
 ```bash
@@ -49,14 +52,16 @@ nodemon index.js
 
 Open your browser and go to:
 
-`http://localhost:3000` to upload your file
+`http://localhost:3000/` and upload your json file, the server will respond with ip and mac address details along with tcp/udp port numbers. Edit the functions in `packetAnalyzer.js` to get your own customize output.
 
-Vist `http://localhost:3000/api/packetdata` for the table.
+Vist `http://localhost:3000/api/packetdata` for the results of the last file uploaded
 
-## Built With
+## Technology Used
 
 -   [Node.js](https://nodejs.org/en/) - JavaScript runtime
 -   [npm](https://www.npmjs.com/) - Package manager
+-   [MongoDB Atlas](https://www.mongodb.com/atlas
+-   [Mongoose](https://mongoosejs.com)
 -   [WireShark](https://www.wireshark.org/) - Network protocol analyzer
 -   [JSON](https://www.json.org/) - Data format
 -   [JavaScript](https://learnjavascript.online/) - Programming language
