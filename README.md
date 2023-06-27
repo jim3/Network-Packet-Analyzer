@@ -57,15 +57,16 @@ Open your browser and go to:
 -   [JavaScript](https://learnjavascript.online/) - Programming language
 -   [Visual Studio Code](https://code.visualstudio.com/) - Code editor
 
+---
 
-## HTML Table Output Example
+### HTML Table Output Example
 
 ![01-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/bad971c4-f95b-40a5-8c87-d7dfe8d9fc54)
 
 ![02-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/f57e3065-32d9-450c-827f-189272fcdc98)
 
 
-## JSON Output Example
+### JSON Output Example
 
 ```json
 {
