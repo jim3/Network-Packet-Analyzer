@@ -13,24 +13,12 @@ An app that analyzes exported Wireshark packets in JSON format [see here](https:
 
 There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse the data, extract various data from the file and respond back to the client via JSON. In addition to that I included a way to save the results to a [MongoDB Atlas](https://www.mongodb.com/atlas) database. I used Mongoose.js as the ODM. Instead of writing to an HTML table I might try using MongoDB charts, I always wanted to see how that was done...
 
-### Tech Stack
-
--   Node.js
--   Express.js
--   MongoDB
--   Mongoose.js
--   JavaScript
--   EJS
-
 ## Getting Started
 
 These instructions will hopefully get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you.
 
 -   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file. `API_KEY=<your-api-key>`
--   To be able to write to the database place your conncection string place the following in your `.env file, substituting your username and password:<br>
-    `MONGO_DB_CONNECTION_STRING=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.hi0ayas.mongodb.net/?retryWrites=true&w=majority>`
--   Info on how to get your connection string is here: [MongoDB Connection String (https://www.mongodb.com/docs/guides/atlas/connection-string)
-
+-   Info on how to get your connection string is here: [MongoDB Connection String (https://www.mongodb.com/docs/guides/atlas/connection-string) Place your connection sting inside the .env file as well
 
 ### Installation
 
@@ -56,7 +44,7 @@ node index.js
 
 Open your browser and go to:
 
-`http://localhost:3000` to upload your file and `http://localhost:3000/api/packetdata` to view the data in table format once the data is rendered.
+`http://localhost:3000` to upload your file
 
 ## Built With
 
