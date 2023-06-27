@@ -1,15 +1,10 @@
 const fs = require("fs/promises");
 const dotenv = require("dotenv");
 
-dotenv.config(); // load environment variables from .env file
+dotenv.config();
 
 class PacketAnalyzer {
     constructor() {}
-
-    async writeData(data) {
-        data = await fs.writeFile("./data/packet_data.json", JSON.stringify(data));
-        return data;
-    }
 
     // ------------------------- IP Addresses ------------------------- //
 
@@ -18,9 +13,7 @@ class PacketAnalyzer {
         data = JSON.parse(data);
         data = Object.keys(data).map((key) => data[key]);
 
-        const filteredSets = data.filter(
-            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip")
-        );
+        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip"));
 
         const ipSrcSet = new Set();
         const ipDstSet = new Set();
@@ -80,9 +73,7 @@ class PacketAnalyzer {
         data = JSON.parse(data);
         data = Object.keys(data).map((key) => data[key]);
 
-        const filteredSets = data.filter(
-            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth")
-        );
+        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth"));
 
         const macSourceSet = new Set();
         const macDestinationSet = new Set();
@@ -118,9 +109,7 @@ class PacketAnalyzer {
         data = JSON.parse(data);
         data = Object.keys(data).map((key) => data[key]);
 
-        const filteredSets = data.filter(
-            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp")
-        );
+        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp"));
 
         const udpSourceSet = new Set();
         const udpDestinationSet = new Set();
@@ -157,9 +146,7 @@ class PacketAnalyzer {
         data = Object.keys(data).map((key) => data[key]);
 
         // filter out packets that do not have tcp layer
-        const filteredSets = data.filter(
-            (e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp")
-        );
+        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp"));
 
         // create sets to remove the duplicates from the arrays
         const tcpSourceSet = new Set();
@@ -211,8 +198,7 @@ class PacketAnalyzer {
                 udpPorts,
                 tcpPorts,
             };
-            
-            this.writeData(packetData); // write results to a file for the table
+
             return packetData;
         } catch (error) {
             throw new Error("FAIL!!! Error analyzing packet file");
