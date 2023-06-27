@@ -4,11 +4,10 @@ const PacketAnalyzer = require("../services/packetAnalyzer");
 const Packet = require("../models/Packet");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
-
 const dotenv = require("dotenv");
 dotenv.config();
 
-// Setup Mongoose connection
+// sets up a nongoose db connection
 const mongoose = require("mongoose");
 const uri = process.env.MONGO_DB_CONNECTION_STRING;
 
@@ -21,9 +20,9 @@ mongoose
     .then(() => console.log("Successfully connected to MongoDB."))
     .catch((err) => console.error("Connection error", err));
 
-// ------------------------- GET ------------------------- //
+// ----------------------------------------------------- //
 
-// Render the upload page
+// Renders the upload page
 router.get("/", async (req, res) => {
     res.render("index", { title: "Home" });
 });
@@ -41,7 +40,7 @@ const createPacket = async (analysisResult) => {
 
 // ----------------------------------------------------- //
 
-// Calls the `packetAnalyzer` function to analyze the uploaded packet file and responds with json data
+// Uploads a packet file and analyzes it
 router.post("/api/packetanalysis", upload.single("packetFile"), async (req, res) => {
     try {
         const packetAnalyzer = new PacketAnalyzer();
