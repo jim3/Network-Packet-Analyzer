@@ -11,7 +11,7 @@ An app that analyzes exported Wireshark packets in JSON format [see here](https:
 
 4. TCP & UDP source and destination port numbers
 
-There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse the data, extract various data from the file and respond back to the client via JSON. In addition to that I included a way to save the results to a [MongoDB Atlas](https://www.mongodb.com/atlas) database. I used Mongoose.js as the ODM.
+There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse the data, extract various data from the file and respond back to the client via JSON. In addition to that I included a way to save the results to a [MongoDB Atlas](https://www.mongodb.com/atlas) database. I used Mongoose.js as the ODM. Instead of writing to an HTML table I might try using MongoDB charts, I always wanted to see how that was done...
 
 ### Tech Stack
 
