@@ -11,9 +11,7 @@ An app that analyzes exported Wireshark packets in JSON format [see here](https:
 
 4. TCP & UDP source and destination port numbers
 
-There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse the data, extract various data from the file and respond back to the client via JSON. There is also a separate endpoint at `/api/packetdata` that returns the data in a html table. I am not sure that this portion of the project will stay, it was just something temporary I wanted to do to see the data in a table format. Lastly, it has the ability to save the results to your [MongoDB Atlas](https://www.mongodb.com/atlas) database. I used Mongoose.js to save the results to the collection (still a lot to learn on that end). This portion of the project is probably where I plan to focus on for now. The ability to take the data and save it to a database is important to me. I want to be able to analyze the data over time and see how it changes, query the data and just see what I can learn from it without having to parse the data every time.
-
-**TODO**: Improve the code, mainly the actual program that parses the data. I want to make it more robust and add more data analysis. ~~I'm also thinking about adding a database to store the data~~. I'm not sure if that's necessary but I'm thinking about it.
+There is a front-end for the app at the root endpoint `/`. This allows you to upload your exported json file. The server will parse the data, extract various data from the file and respond back to the client via JSON. In addition to that I included a way to save the results to a MongoDB Atlas [MongoDB Atlas](https://www.mongodb.com/atlas) database. I used Mongoose.js as the ODM.
 
 ### Tech Stack
 
@@ -26,9 +24,17 @@ There is a front-end for the app at the root endpoint `/`. This allows you to up
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you. 
+These instructions will hopefully get you a copy of the project up and running on your local machine. I invite more experienced developers to take this simple project and make it better. Then I can learn from you.
 
-To get the ip address location details I used [ip2location.io](https://www.ip2location.io). But you can use whatever API you want. I just liked the simplicity of ip2location.io.
+-   To get the IP address location details I used the [ip2location.io](https://www.ip2location.io) API. Place your API key in the `.env` file.
+
+`API_KEY=<your-api-key>`
+
+-   To be able to write to the database you will need to create a `.env` file in the root directory and add your MongoDB Atlas connection string. Info on how to get your connection string is here: [MongoDB Connection String](https://www.mongodb.com/docs/guides/atlas/connection-string)
+
+Place the following in your `.env file, substituting your username and password:
+
+`MONGO_DB_CONNECTION_STRING=mongodb+srv://<USERNAME>:<PASSWORD>@cluster0.hi0ayas.mongodb.net/?retryWrites=true&w=majority>`
 
 ### Installation
 
