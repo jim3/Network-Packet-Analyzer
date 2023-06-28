@@ -41,8 +41,12 @@ npm install
 
 ### Usage
 
-1. Capture some Wireshark packets, use a capture filter for better results (ex: `host <YourIP> and not broadcast and not multicast and ip`)
-2. Stop Wireshark capture then, `File > Export Packet Dissections > As JSON`
+Capture some Wireshark packets, use a capture filter for better results:
+
+- Wireshark `host <YourIP> and not broadcast and not multicast and ip` then `File > Export Packet Dissections > As JSON`
+
+- TShark: `./tshark -i <interface> -T json -c 100 > <path to json file>`
+
 
 Run the script
 
