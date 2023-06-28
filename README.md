@@ -58,7 +58,7 @@ Open your browser and go to:
 
 `http://localhost:3000/` and upload your json file, the server will respond with ip and mac address details along with tcp/udp port numbers. Edit the functions in `packetAnalyzer.js` to get your own customize output.
 
-Vist `http://localhost:3000/api/packetdata` for the results of the last file uploaded
+Vist `http://localhost:3000/api/packetdata` for the results of the last file uploaded in HTML tabl format
 
 ## Technology Used
 
