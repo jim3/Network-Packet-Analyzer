@@ -74,9 +74,10 @@ Vist `http://localhost:3000/api/packetdata` for the results of the last file upl
 ---
 
 ### HTML Table Output Example
+![01-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/175c0de5-823e-498d-a615-bf627d8bfd7b)
 
+![02-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/4316b5a3-dae5-4909-99bb-7937b3d2c1db)
 
-![table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/348ecc42-72ab-45c8-98e4-a760cc1f7c4c)
 
 
 ### JSON Output Example
