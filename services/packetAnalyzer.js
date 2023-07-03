@@ -1,30 +1,31 @@
 const fs = require("fs/promises");
 const dotenv = require("dotenv");
-
 dotenv.config();
 
 class PacketAnalyzer {
     constructor() {}
-
-    // ------------------------- IP Addresses ------------------------- //
-
     async ipAddresses(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
-        data = Object.keys(data).map((key) => data[key]);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
 
-        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip"));
+        const filteredSets = data.filter(function (e) {
+            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip");
+        });
 
         const ipSrcSet = new Set();
         const ipDstSet = new Set();
 
         filteredSets.forEach((e) => {
             const ip = e._source.layers.ip;
-            if (ip["ip.src"]) {
-                ipSrcSet.add(ip["ip.src"]);
+
+            if (ip["ip.src_host"]) {
+                ipSrcSet.add(ip["ip.src_host"]);
             }
-            if (ip["ip.dst"]) {
-                ipDstSet.add(ip["ip.dst"]);
+            if (ip["ip.dst_host"]) {
+                ipDstSet.add(ip["ip.dst_host"]);
             }
         });
 
@@ -71,9 +72,13 @@ class PacketAnalyzer {
     async macAddresses(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
-        data = Object.keys(data).map((key) => data[key]);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
 
-        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth"));
+        const filteredSets = data.filter(function (e) {
+            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth");
+        });
 
         const macSourceSet = new Set();
         const macDestinationSet = new Set();
@@ -107,9 +112,13 @@ class PacketAnalyzer {
     async udpPorts(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
-        data = Object.keys(data).map((key) => data[key]);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
 
-        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp"));
+        const filteredSets = data.filter(function (e) {
+            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp");
+        });
 
         const udpSourceSet = new Set();
         const udpDestinationSet = new Set();
@@ -143,16 +152,17 @@ class PacketAnalyzer {
     async tcpPorts(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
-        data = Object.keys(data).map((key) => data[key]);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
 
-        // filter out packets that do not have tcp layer
-        const filteredSets = data.filter((e) => e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp"));
+        const filteredSets = data.filter(function (e) {
+            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp");
+        });
 
-        // create sets to remove the duplicates from the arrays
         const tcpSourceSet = new Set();
         const tcpDestinationSet = new Set();
 
-        // add tcp ports to sets
         filteredSets.forEach((e) => {
             const tcpSource = e._source.layers.tcp["tcp.srcport"];
             const tcpDestination = e._source.layers.tcp["tcp.dstport"];
@@ -166,7 +176,6 @@ class PacketAnalyzer {
             }
         });
 
-        // convert sets to arrays so you can iterate over them (who wants to iterate over a set?)
         const tcpSourceArray = Array.from(tcpSourceSet);
         const tcpDestinationArray = Array.from(tcpDestinationSet);
 
@@ -178,18 +187,16 @@ class PacketAnalyzer {
         return tcpPorts;
     }
 
-    // ------------------------- Insert into Database ------------------------- //
-
     async analyzePacketFile(filePath) {
         if (!filePath) {
             throw new Error("No file path provided");
         }
         try {
             const ipAddresses = await this.ipAddresses(filePath);
+            const ipDetails = await this.ipDetails(ipAddresses);
             const macAddresses = await this.macAddresses(filePath);
             const udpPorts = await this.udpPorts(filePath);
             const tcpPorts = await this.tcpPorts(filePath);
-            const ipDetails = await this.ipDetails(ipAddresses);
 
             const packetData = {
                 ipAddresses,
