@@ -64,7 +64,7 @@ Vist `http://localhost:3000/api/packetdata` for the results of the last file upl
 
 -   [Node.js](https://nodejs.org/en/) - JavaScript runtime
 -   [npm](https://www.npmjs.com/) - Package manager
--   [MongoDB Atlas](https://www.mongodb.com/atlas
+-   [MongoDB Atlas](https://www.mongodb.com/atlas)
 -   [Mongoose](https://mongoosejs.com)
 -   [WireShark](https://www.wireshark.org/) - Network protocol analyzer
 -   [JSON](https://www.json.org/) - Data format
