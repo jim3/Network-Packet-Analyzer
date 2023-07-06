@@ -11,7 +11,7 @@ There is an HTML front-end (form) for the app at the root endpoint `/`. This all
 
 [MongoDB Atlas](https://www.mongodb.com/atlas) is how the table gets populated. It reads from the last packet in the collection and Express renders it to the `/api/packetdata` endpoint. See examples of it at the bottom of the README.md
 
-From here on out, I mainly want to improve the code and focus on database portion of the project. This project is a work-in-progress so it's not stable...and honestly, this is more of a learning exercise than anything. 
+From here on out, I mainly want to improve the code and focus on the database portion of the project. This project is a work-in-progress so it's not stable...and honestly, this is more of a learning exercise than anything. 
 
 ## Getting Started
 
