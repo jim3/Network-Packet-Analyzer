@@ -12,7 +12,6 @@ class PacketAnalyzer {
         });
 
         const ipSet = new Set();
-        // these fields pull directly from the json/pcap file
         const fieldsToCheck = ["ip.src", "ip.dst"];
 
         data.forEach((e) => {
@@ -28,7 +27,6 @@ class PacketAnalyzer {
 
         // list of unique ip addresses
         const ipAddr = Array.from(ipSet);
-        console.log("ipAddr....", ipAddr); 
         return ipAddr;
     }
 
@@ -173,7 +171,6 @@ class PacketAnalyzer {
             }
         });
 
-        // convert set to array
         const ipSrcArr = Array.from(ipDetailsSourceSet);
         const ipDstArr = Array.from(ipDetailsDestinationSet);
 
