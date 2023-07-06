@@ -11,63 +11,26 @@ class PacketAnalyzer {
             return data[key];
         });
 
-        const filteredSets = data.filter(function (e) {
-            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("ip");
-        });
+        const ipSet = new Set();
+        // these fields pull directly from the json/pcap file
+        const fieldsToCheck = ["ip.src", "ip.dst"];
 
-        const ipSrcSet = new Set();
-        const ipDstSet = new Set();
-
-        filteredSets.forEach((e) => {
-            const ip = e._source.layers.ip;
-
-            if (ip["ip.src_host"]) {
-                ipSrcSet.add(ip["ip.src_host"]);
-            }
-            if (ip["ip.dst_host"]) {
-                ipDstSet.add(ip["ip.dst_host"]);
+        data.forEach((e) => {
+            if (e._source.layers && e._source.layers.ip) {
+                const ip = e._source.layers.ip;
+                fieldsToCheck.forEach((field) => {
+                    if (ip[field]) {
+                        ipSet.add(ip[field]);
+                    }
+                });
             }
         });
 
-        const ipSrc = Array.from(ipSrcSet);
-        const ipDst = Array.from(ipDstSet);
-
-        return { ipSrc, ipDst };
+        // list of unique ip addresses
+        const ipAddr = Array.from(ipSet);
+        console.log("ipAddr....", ipAddr); 
+        return ipAddr;
     }
-
-    // ------------------------- IP Details ------------------------- //
-
-    async ipDetails(data) {
-        const ipSourceDetails = [];
-        const ipDestinationDetails = [];
-
-        const getIPDetails = async (ipAddress) => {
-            const baseURL = "https://api.ip2location.io/";
-            const apiKey = process.env.API_KEY;
-            const format = "json";
-            const url = `${baseURL}?key=${apiKey}&ip=${ipAddress}&format=${format}`;
-            const response = await fetch(url);
-            const data = await response.json();
-            return data;
-        };
-
-        const ipSource = data.ipSrc;
-        const ipDestination = data.ipDst;
-
-        for (let i = 0; i < ipSource.length; i++) {
-            const ipSourceDetail = await getIPDetails(ipSource[i]);
-            ipSourceDetails.push(ipSourceDetail);
-        }
-
-        for (let i = 0; i < ipDestination.length; i++) {
-            const ipDestinationDetail = await getIPDetails(ipDestination[i]);
-            ipDestinationDetails.push(ipDestinationDetail);
-        }
-
-        return { ipSourceDetails, ipDestinationDetails };
-    }
-
-    // ------------------------- MAC Addresses ------------------------- //
 
     async macAddresses(data) {
         data = await fs.readFile(data, "utf-8");
@@ -76,23 +39,19 @@ class PacketAnalyzer {
             return data[key];
         });
 
-        const filteredSets = data.filter(function (e) {
-            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("eth");
-        });
-
         const macSourceSet = new Set();
         const macDestinationSet = new Set();
 
-        filteredSets.forEach((e) => {
-            const macSource = e._source.layers.eth["eth.src"];
-            const macDestination = e._source.layers.eth["eth.dst"];
-
-            if (macSource) {
-                macSourceSet.add(macSource);
-            }
-
-            if (macDestination) {
-                macDestinationSet.add(macDestination);
+        data.forEach((e) => {
+            if (e._source.layers && e._source.layers.eth) {
+                const macSource = e._source.layers.eth["eth.src"];
+                const macDestination = e._source.layers.eth["eth.dst"];
+                if (macSource) {
+                    macSourceSet.add(macSource);
+                }
+                if (macDestination) {
+                    macDestinationSet.add(macDestination);
+                }
             }
         });
 
@@ -107,8 +66,6 @@ class PacketAnalyzer {
         return macAddresses;
     }
 
-    // ------------------------- UDP Ports ------------------------- //
-
     async udpPorts(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
@@ -116,23 +73,24 @@ class PacketAnalyzer {
             return data[key];
         });
 
-        const filteredSets = data.filter(function (e) {
-            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("udp");
-        });
-
         const udpSourceSet = new Set();
         const udpDestinationSet = new Set();
 
-        filteredSets.forEach((e) => {
-            const udpSource = e._source.layers.udp["udp.srcport"];
-            const udpDestination = e._source.layers.udp["udp.dstport"];
+        if (!data) {
+            throw new Error("No data provided");
+        }
+        data.forEach((e) => {
+            if (e._source.layers && e._source.layers.udp) {
+                const udpSource = e._source.layers.udp["udp.srcport"];
+                const udpDestination = e._source.layers.udp["udp.dstport"];
 
-            if (udpSource) {
-                udpSourceSet.add(udpSource);
-            }
+                if (udpSource) {
+                    udpSourceSet.add(udpSource);
+                }
 
-            if (udpDestination) {
-                udpDestinationSet.add(udpDestination);
+                if (udpDestination) {
+                    udpDestinationSet.add(udpDestination);
+                }
             }
         });
 
@@ -147,8 +105,6 @@ class PacketAnalyzer {
         return udpPorts;
     }
 
-    // ------------------------- TCP Ports ------------------------- //
-
     async tcpPorts(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
@@ -156,23 +112,19 @@ class PacketAnalyzer {
             return data[key];
         });
 
-        const filteredSets = data.filter(function (e) {
-            return e.hasOwnProperty("_source") && e._source.layers.hasOwnProperty("tcp");
-        });
-
         const tcpSourceSet = new Set();
         const tcpDestinationSet = new Set();
 
-        filteredSets.forEach((e) => {
-            const tcpSource = e._source.layers.tcp["tcp.srcport"];
-            const tcpDestination = e._source.layers.tcp["tcp.dstport"];
-
-            if (tcpSource) {
-                tcpSourceSet.add(tcpSource);
-            }
-
-            if (tcpDestination) {
-                tcpDestinationSet.add(tcpDestination);
+        data.forEach((e) => {
+            if (e._source.layers && e._source.layers.tcp) {
+                const tcpSource = e._source.layers.tcp["tcp.srcport"];
+                const tcpDestination = e._source.layers.tcp["tcp.dstport"];
+                if (tcpSource) {
+                    tcpSourceSet.add(tcpSource);
+                }
+                if (tcpDestination) {
+                    tcpDestinationSet.add(tcpDestination);
+                }
             }
         });
 
@@ -187,19 +139,80 @@ class PacketAnalyzer {
         return tcpPorts;
     }
 
+    async ipDetails(data) {
+        data = await fs.readFile(data, "utf-8");
+        data = JSON.parse(data);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
+
+        const getIPDetails = async (ipAddress) => {
+            const baseURL = "https://api.ip2location.io/";
+            const apiKey = process.env.API_KEY;
+            const format = "json";
+            const url = `${baseURL}?key=${apiKey}&ip=${ipAddress}&format=${format}`;
+            const response = await fetch(url);
+            const data = await response.json();
+            return data;
+        };
+
+        // create a set to store unique ip addresses
+        let ipDetailsSourceSet = new Set();
+        let ipDetailsDestinationSet = new Set();
+
+        data.forEach((e) => {
+            if (e._source.layers && e._source.layers.ip) {
+                const ipSource = e._source.layers.ip["ip.src"];
+                const ipDestination = e._source.layers.ip["ip.dst"];
+                if (ipSource) {
+                    ipDetailsSourceSet.add(ipSource);
+                }
+                if (ipDestination) {
+                    ipDetailsDestinationSet.add(ipDestination);
+                }
+            }
+        });
+
+        // convert set to array
+        const ipSrcArr = Array.from(ipDetailsSourceSet);
+        const ipDstArr = Array.from(ipDetailsDestinationSet);
+
+        // get ip details for each ip address
+        const ipDetailsSource = await Promise.all(
+            ipSrcArr.map(async (ip) => {
+                const ipDetails = await getIPDetails(ip);
+                return ipDetails;
+            })
+        );
+
+        const ipDetailsDestination = await Promise.all(
+            ipDstArr.map(async (ip) => {
+                const ipDetails = await getIPDetails(ip);
+                return ipDetails;
+            })
+        );
+
+        const ipDetails = {
+            ipDetailsSource,
+            ipDetailsDestination,
+        };
+
+        return ipDetails;
+    }
+
     async analyzePacketFile(filePath) {
         if (!filePath) {
             throw new Error("No file path provided");
         }
         try {
-            const ipAddresses = await this.ipAddresses(filePath);
-            const ipDetails = await this.ipDetails(ipAddresses);
+            const ipAddr = await this.ipAddresses(filePath);
             const macAddresses = await this.macAddresses(filePath);
             const udpPorts = await this.udpPorts(filePath);
             const tcpPorts = await this.tcpPorts(filePath);
+            const ipDetails = await this.ipDetails(filePath);
 
             const packetData = {
-                ipAddresses,
+                ipAddr,
                 ipDetails,
                 macAddresses,
                 udpPorts,
