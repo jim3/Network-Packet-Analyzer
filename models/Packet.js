@@ -1,15 +1,11 @@
-// ----------------------------------------------------- //
 // Mongoose Schema for the 'packets` collection
-// ----------------------------------------------------- //
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Define a schema for the database collection
 const PacketSchema = new Schema({
-    ipAddresses: {
-        ipSrc: { type: [String], required: true },
-        ipDst: { type: [String], required: true },
-    },
+    ipAddr: { type: [String], required: true },
+
     macAddresses: {
         macSource: { type: [String], required: true },
         macDestination: { type: [String], required: true },
@@ -23,7 +19,7 @@ const PacketSchema = new Schema({
         tcpDestination: { type: [String], required: true },
     },
     ipDetails: {
-        ipSourceDetails: [
+        ipDetailsSource: [
             {
                 ip: { type: String, required: true },
                 country_code: { type: String, required: true },
@@ -39,7 +35,7 @@ const PacketSchema = new Schema({
                 is_proxy: { type: Boolean, required: true },
             },
         ],
-        ipDestinationDetails: [
+        ipDetailsDestination: [
             {
                 ip: { type: String, required: true },
                 country_code: { type: String, required: true },
