@@ -4,31 +4,24 @@
     <head>
         <title>File Metadata</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-        <link href="../public/css/style.css" rel="stylesheet" type="text/css" />
+        <link href="/css/style.css" rel="stylesheet" type="text/css" />
+        <!-- <link rel="stylesheet" href="/css/style.css" /> -->
     </head>
 
     <body>
         <div class="container">
-            <h2>Upload File Microservice EJS</h2>
+            <h2>Network Packet Analyzer</h2>
 
             <h3>Usage: ...</h3>
             <p>Please Upload a File ...</p>
 
             <div class="view">
                 <h4 id="output"></h4>
-                <form action="/api/packetanalysis" method="POST" enctype="multipart/form-data">
+                <form action="/api/packet/analyze" method="POST" enctype="multipart/form-data">
                     <input type="file" name="packetFile" />
                     <input type="submit" value="Upload" />
                 </form>
             </div>
         </div>
-        <% if (typeof packetData !=="undefined" ) { %>
-        <h3>File Details:</h3>
-        <p>File Name: <%= packetData.ipAddresses.ipSrc %></p>
-        <p>File Size: <%= packetData.ipDetails %> bytes</p>
-        <p>File Type: <%= packetData.macAddresses.macSource %></p>
-        <p>File Type: <%= packetData.udpPorts.udpSource %></p>
-        <p>File Type: <%= packetData.tcpPorts.tcpDestination %></p>
-        <% } %>
     </body>
 </html>
