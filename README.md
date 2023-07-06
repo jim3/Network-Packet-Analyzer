@@ -3,11 +3,8 @@
 The application analyzes exported Wireshark packets in JSON format. [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html) Currently, it extracts the following:
 
 1. Source & Destination IP details (city, state, country)
-
 2. Source & Destination IP addresses
-
 3. Source & Destination MAC addresses
-
 4. TCP & UDP source and destination port numbers
 
 There is an HTML front-end (form) for the app at the root endpoint `/`. This allows you upload your exported json file. The server extracts the data and responds back to the client with JSON. I created another endpoint located at `/api/packetdata` that displays the results in HTML table format. 
