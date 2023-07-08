@@ -1,7 +1,6 @@
 html,
 body {
     background-color: #141414;
-    /* color: #500080; 4c4c4c */
 }
 h1 {
     color: #000000;
@@ -29,16 +28,13 @@ caption {
 
 th {
     background-color: #fff000;
-    /* color: #141414; */
     text-align: left;
     border: 1px solid #ddd;
 }
 
 tr {
-    /* background-color: #141414; */
-    /* background-color: #868584; */
+
     background-color: #2c2c2c;
-    /* color: blue; */
 }
 
 td {
@@ -49,7 +45,6 @@ td {
 }
 caption {
     margin-bottom: 10px;
-    /* background-color: #fff000; */
     color: #141414;
     font-weight: bold;
 }
