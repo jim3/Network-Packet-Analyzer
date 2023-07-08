@@ -6,23 +6,12 @@ const Schema = mongoose.Schema;
 // Define a schema for the database collection
 const PacketSchema = new Schema({
     ipAddr: { type: [String], required: true },
-
     dnsArray: { type: [String], required: false },
-
     httpArray: { type: [String], required: false },
+    macArray: { type: [String], required: false },
+    udpArray: { type: [String], required: false },
+    tcpArray: { type: [String], required: false },
 
-    macAddresses: {
-        macSource: { type: [String], required: true },
-        macDestination: { type: [String], required: true },
-    },
-    udpPorts: {
-        udpSource: { type: [String], required: true },
-        udpDestination: { type: [String], required: true },
-    },
-    tcpPorts: {
-        tcpSource: { type: [String], required: true },
-        tcpDestination: { type: [String], required: true },
-    },
     ipDetails: {
         ipDetailsSource: [
             {
