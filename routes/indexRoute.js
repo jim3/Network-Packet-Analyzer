@@ -26,7 +26,9 @@ router.get("/", async (req, res) => {
     res.render("index", { title: "Home" });
 });
 
-// get last document
+// ----------------------------------------------------- //
+
+// endpoint to retrieve the last packet uploaded to MongoDB
 router.get("/api/packet/data", async (req, res) => {
     try {
         const packetData = await Packet.find().sort({ _id: -1 }).limit(1);
@@ -39,7 +41,9 @@ router.get("/api/packet/data", async (req, res) => {
     }
 });
 
-// return the total of ip addresses
+// ----------------------------------------------------- //
+
+// TODO: new changes broke this endpoint, fix asap
 router.get("/api/packet/ipaddress", async (req, res) => {
     if (!req.query.ip) {
         res.status(400).json({ error: "Missing required query parameter: ip" });
@@ -64,14 +68,21 @@ router.get("/api/packet/ipaddress", async (req, res) => {
     }
 });
 
+// ----------------------------------------------------- //
+
 // creates a new document in the database
 const createPacket = async (analysisResult) => {
-    const { ipAddr, ipDetails, macAddresses, udpPorts, tcpPorts } = analysisResult;
-    Packet.create({ ipAddr, ipDetails, macAddresses, udpPorts, tcpPorts }).then((packet) => {
-        console.log("Packet created: ", packet); // `[]` empty
+    try {
+        const { ipAddr, dnsArray, httpArray, ipDetails, macAddresses, udpPorts, tcpPorts } = analysisResult;
+        const packet = await Packet.create({ ipAddr, dnsArray, httpArray, ipDetails, macAddresses, udpPorts, tcpPorts });
+        console.log("Packet created: ", packet);
         return packet;
-    });
+    } catch (error) {
+        console.error("Error creating packet: ", error);
+    }
 };
+
+// ----------------------------------------------------- //
 
 // analyzes the uploaded packet file and returns the result
 router.post("/api/packet/analyze", upload.single("packetFile"), async (req, res) => {
