@@ -43,7 +43,7 @@ router.get("/api/packet/data", async (req, res) => {
 
 // ----------------------------------------------------- //
 
-// TODO: new changes broke this endpoint, fix asap
+// return the total of ip addresses
 router.get("/api/packet/ipaddress", async (req, res) => {
     if (!req.query.ip) {
         res.status(400).json({ error: "Missing required query parameter: ip" });
@@ -73,8 +73,8 @@ router.get("/api/packet/ipaddress", async (req, res) => {
 // creates a new document in the database
 const createPacket = async (analysisResult) => {
     try {
-        const { ipAddr, dnsArray, httpArray, ipDetails, macAddresses, udpPorts, tcpPorts } = analysisResult;
-        const packet = await Packet.create({ ipAddr, dnsArray, httpArray, ipDetails, macAddresses, udpPorts, tcpPorts });
+        const { ipAddr, dnsArray, httpArray, ipDetails, macArray, udpArray, tcpArray } = analysisResult;
+        const packet = await Packet.create({ ipAddr, dnsArray, httpArray, ipDetails, macArray, udpArray, tcpArray });
         console.log("Packet created: ", packet);
         return packet;
     } catch (error) {
@@ -90,7 +90,7 @@ router.post("/api/packet/analyze", upload.single("packetFile"), async (req, res)
         const packetAnalyzer = new PacketAnalyzer();
         const analysisResult = await packetAnalyzer.analyzePacketFile(req.file.path); // path to the uploaded file
         await createPacket(analysisResult);
-        res.json(analysisResult);
+        res.json(analysisResult); // this prints dns/http arrays
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: "An error occurred during analysis" });
@@ -98,3 +98,4 @@ router.post("/api/packet/analyze", upload.single("packetFile"), async (req, res)
 });
 
 module.exports = router;
+
