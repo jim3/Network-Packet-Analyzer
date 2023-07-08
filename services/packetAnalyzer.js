@@ -25,10 +25,77 @@ class PacketAnalyzer {
             }
         });
 
-        // list of unique ip addresses
         const ipAddr = Array.from(ipSet);
         return ipAddr;
     }
+
+    // ------------------------- DNS ------------------------- //
+
+    async dns(data) {
+        data = await fs.readFile(data, "utf-8");
+        data = JSON.parse(data);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
+        const dnsSet = new Set();
+
+        data.forEach((e) => {
+            if (e._source.layers.dns) {
+                const dns = e._source.layers.dns; // grab the dns object
+
+                const queriesArray = Object.values(dns.Queries);
+                if (queriesArray) {
+                    queriesArray.forEach((query) => {
+                        if (query["dns.qry.name"]) {
+                            dnsSet.add(query["dns.qry.name"]);
+                        }
+                    });
+                }
+                const answersObj = dns.Answers;
+                if (answersObj) {
+                    const answersArray = Object.values(answersObj);
+                    if (answersArray) {
+                        answersArray.forEach((answer) => {
+                            if (answer["dns.resp.name"]) {
+                                dnsSet.add(answer["dns.resp.name"]);
+                            }
+                        });
+                    }
+                }
+            }
+        });
+
+        const dnsArray = Array.from(dnsSet);
+        return dnsArray;
+    }
+
+    // ------------------------- HTTP ------------------------- //
+
+    async http(data) {
+        data = await fs.readFile(data, "utf-8");
+        data = JSON.parse(data);
+        data = Object.keys(data).map(function (key) {
+            return data[key];
+        });
+        const httpSet = new Set();
+        const fieldsToCheck = ["http.host", "http.request.full_uri", "http.request.method", "http.user_agent"];
+
+        data.forEach((e) => {
+            if (e._source.layers.http) {
+                const http = e._source.layers.http; // grab the http object
+                fieldsToCheck.forEach((field) => {
+                    if (http[field]) {
+                        httpSet.add(http[field]);
+                    }
+                });
+            }
+        });
+
+        const httpArray = Array.from(httpSet);
+        return httpArray;
+    }
+
+    // ------------------------- MAC Addresses ------------------------- //
 
     async macAddresses(data) {
         data = await fs.readFile(data, "utf-8");
@@ -63,6 +130,8 @@ class PacketAnalyzer {
 
         return macAddresses;
     }
+
+    // ------------------------- UDP Ports ------------------------- //
 
     async udpPorts(data) {
         data = await fs.readFile(data, "utf-8");
@@ -103,6 +172,8 @@ class PacketAnalyzer {
         return udpPorts;
     }
 
+    // ------------------------- TCP Ports ------------------------- //
+
     async tcpPorts(data) {
         data = await fs.readFile(data, "utf-8");
         data = JSON.parse(data);
@@ -136,6 +207,8 @@ class PacketAnalyzer {
 
         return tcpPorts;
     }
+
+    // ------------------------- IP Details ------------------------- //
 
     async ipDetails(data) {
         data = await fs.readFile(data, "utf-8");
@@ -174,7 +247,6 @@ class PacketAnalyzer {
         const ipSrcArr = Array.from(ipDetailsSourceSet);
         const ipDstArr = Array.from(ipDetailsDestinationSet);
 
-        // get ip details for each ip address
         const ipDetailsSource = await Promise.all(
             ipSrcArr.map(async (ip) => {
                 const ipDetails = await getIPDetails(ip);
@@ -197,12 +269,16 @@ class PacketAnalyzer {
         return ipDetails;
     }
 
+    // -------------------------------------------------------- //
+
     async analyzePacketFile(filePath) {
         if (!filePath) {
             throw new Error("No file path provided");
         }
         try {
             const ipAddr = await this.ipAddresses(filePath);
+            const dnsArray = await this.dns(filePath);
+            const httpArray = await this.http(filePath);
             const macAddresses = await this.macAddresses(filePath);
             const udpPorts = await this.udpPorts(filePath);
             const tcpPorts = await this.tcpPorts(filePath);
@@ -210,10 +286,12 @@ class PacketAnalyzer {
 
             const packetData = {
                 ipAddr,
-                ipDetails,
+                dnsArray,
+                httpArray,
                 macAddresses,
                 udpPorts,
                 tcpPorts,
+                ipDetails,
             };
 
             return packetData;
