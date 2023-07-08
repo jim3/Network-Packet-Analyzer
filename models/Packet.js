@@ -1,10 +1,15 @@
 // Mongoose Schema for the 'packets` collection
+
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 // Define a schema for the database collection
 const PacketSchema = new Schema({
     ipAddr: { type: [String], required: true },
+
+    dnsArray: { type: [String], required: false },
+
+    httpArray: { type: [String], required: false },
 
     macAddresses: {
         macSource: { type: [String], required: true },
