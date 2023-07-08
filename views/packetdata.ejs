@@ -5,152 +5,103 @@
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link href="/css/packet.css" rel="stylesheet" type="text/css" />
     </head>
+
     <body>
         <h1>Packet Data</h1>
-        <div id="container">
-            <div #ipDetails>
-                <% if (typeof packetData !== "undefined") { %>
-                <table>
-                    <caption>
-                        IP Details
-                    </caption>
-                    <tr>
-                        <th>IP Source</th>
-                        <th>Country Source</th>
-                        <th>Region</th>
-                        <th>City</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Zip Code</th>
-                        <th>Time Zone</th>
-                        <th>ASN</th>
-                        <th>ISP</th>
-                        <th>Is Proxy</th>
-                    </tr>
+        <% if (typeof packetData !== "undefined") { %>
+        <table>
+            <caption>
+                IP Details
+            </caption>
+            <tr>
+                <th>IP Source</th>
+                <th>Country Source</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Zip Code</th>
+                <th>Time Zone</th>
+                <th>ASN</th>
+                <th>ISP</th>
+                <th>Is Proxy</th>
+            </tr>
 
-                    <% packetData.ipDetails.ipDetailsSource.forEach((source) => { %>
-                    <tr>
-                        <td><%= source.ip %></td>
-                        <td><%= source.country_name %></td>
-                        <td><%= source.region_name %></td>
-                        <td><%= source.city_name %></td>
-                        <td><%= source.latitude %></td>
-                        <td><%= source.longitude %></td>
-                        <td><%= source.zip_code %></td>
-                        <td><%= source.time_zone %></td>
-                        <td><%= source.asn %></td>
-                        <td><%= source.as %></td>
-                        <td><%= source.is_proxy %></td>
-                    </tr>
-                    <% }) %>
+            <% packetData.ipDetails.ipDetailsSource.forEach((source) => { %>
+            <tr>
+                <td><%= source.ip %></td>
+                <td><%= source.country_name %></td>
+                <td><%= source.region_name %></td>
+                <td><%= source.city_name %></td>
+                <td><%= source.latitude %></td>
+                <td><%= source.longitude %></td>
+                <td><%= source.zip_code %></td>
+                <td><%= source.time_zone %></td>
+                <td><%= source.asn %></td>
+                <td><%= source.as %></td>
+                <td><%= source.is_proxy %></td>
+            </tr>
+            <% }) %>
 
-                    <tr>
-                        <th>IP Destination</th>
-                        <th>Country Destination</th>
-                        <th>Region</th>
-                        <th>City</th>
-                        <th>Latitude</th>
-                        <th>Longitude</th>
-                        <th>Zip Code</th>
-                        <th>Time Zone</th>
-                        <th>ASN</th>
-                        <th>ISP</th>
-                        <th>Is Proxy</th>
-                    </tr>
+            <tr>
+                <th>IP Destination</th>
+                <th>Country Destination</th>
+                <th>Region</th>
+                <th>City</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Zip Code</th>
+                <th>Time Zone</th>
+                <th>ASN</th>
+                <th>ISP</th>
+                <th>Is Proxy</th>
+            </tr>
 
-                    <% packetData.ipDetails.ipDetailsDestination.forEach((destination) => { %>
-                    <tr>
-                        <td><%= destination.ip %></td>
-                        <td><%= destination.country_name %></td>
-                        <td><%= destination.region_name %></td>
-                        <td><%= destination.city_name %></td>
-                        <td><%= destination.latitude %></td>
-                        <td><%= destination.longitude %></td>
-                        <td><%= destination.zip_code %></td>
-                        <td><%= destination.time_zone %></td>
-                        <td><%= destination.asn %></td>
-                        <td><%= destination.as %></td>
-                        <td><%= destination.is_proxy %></td>
-                    </tr>
-                    <% }) %>
-                </table>
-                <% } %>
-            </div>
+            <% packetData.ipDetails.ipDetailsDestination.forEach((destination) => { %>
+            <tr>
+                <td><%= destination.ip %></td>
+                <td><%= destination.country_name %></td>
+                <td><%= destination.region_name %></td>
+                <td><%= destination.city_name %></td>
+                <td><%= destination.latitude %></td>
+                <td><%= destination.longitude %></td>
+                <td><%= destination.zip_code %></td>
+                <td><%= destination.time_zone %></td>
+                <td><%= destination.asn %></td>
+                <td><%= destination.as %></td>
+                <td><%= destination.is_proxy %></td>
+            </tr>
+            <% }) %>
+        </table>
+        <% } %>
 
-            <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
+        <!-- -=-=-=-=-=-=-=-=-=-=-=-=-=-= -->
 
-            <% if (typeof packetData !== "undefined") { %>
-            <div id="ipAdress">
-                <table>
-                    <caption>
-                        IP Addresses
-                    </caption>
-
-                    <tr>
-                        <th># of unique IP's</th>
-                        <% packetData.ipAddr.forEach((ipAddress) => { %>
-                        <td><%= ipAddress %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>DNS</th>
-                        <% packetData.dnsArray.forEach((query) => { %>
-                        <td><%= query %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>HTTP</th>
-                        <% packetData.httpArray.forEach((req) => { %>
-                            <td><%= req %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>Mac Src.</th>
-                        <% packetData.macAddresses.macSource.forEach((macAddress) => { %>
-                        <td><%= macAddress %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>Mac Dst.</th>
-                        <% packetData.macAddresses.macDestination.forEach((macAddress) => { %>
-                        <td><%= macAddress %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>UDP Ports (Src.)</th>
-                        <% packetData.udpPorts.udpSource.forEach((port) => { %>
-                        <td><%= port %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>UDP Ports (Dst.)</th>
-                        <% packetData.udpPorts.udpDestination.forEach((port) => { %>
-                        <td><%= port %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>TCP Ports (Src.)</th>
-                        <% packetData.tcpPorts.tcpSource.forEach((port) => { %>
-                        <td><%= port %></td>
-                        <% }) %>
-                    </tr>
-
-                    <tr>
-                        <th>TCP Ports (Dst.)</th>
-                        <% packetData.tcpPorts.tcpDestination.forEach((port) => { %>
-                        <td><%= port %></td>
-                        <% }) %>
-                    </tr>
-                </table>
-                <% } %>
-            </div>
-        </div>
+        <% if (typeof packetData !== "undefined") { %>
+        <table>
+            <caption>
+                IP Packet Details
+            </caption>
+            <tr>
+                <th>Unique IP Addr.</th>
+                <th>DNS Queries</th>
+                <th>HTTP</th>
+                <th>Mac Addresses</th>
+                <th>UDP Port #'s</th>
+                <th>TCP Port #'s</th>
+            </tr>
+            <% const maxLength = Math.max(packetData.ipAddr.length, packetData.dnsArray.length, packetData.macArray.length,
+            packetData.udpArray.length, packetData.tcpArray.length); for (let i = 0; i < maxLength; i++) { %>
+            <tr>
+                <td><%= packetData.ipAddr[i] || '' %></td>
+                <td><%= packetData.dnsArray[i] || '' %></td>
+                <td><%= packetData.httpArray[i] || '' %></td>
+                <td><%= packetData.macArray[i] || '' %></td>
+                <td><%= packetData.udpArray[i] || '' %></td>
+                <td><%= packetData.tcpArray[i] || '' %></td>
+            </tr>
+            <% } %>
+        </table>
+        <% } %>
     </body>
 </html>
