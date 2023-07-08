@@ -67,9 +67,9 @@ Vist `http://localhost:3000/api/packet/data` to view the results of the last fil
 ---
 
 ### HTML Table Output Example
-![01-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/175c0de5-823e-498d-a615-bf627d8bfd7b)
 
-![02-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/4316b5a3-dae5-4909-99bb-7937b3d2c1db)
+![01-table](https://github.com/jim3/Network-Packet-Analyzer/assets/11630112/2261c091-bb09-4692-823d-9a366483d168)
+
 
 
 
