@@ -263,7 +263,7 @@ class PacketAnalyzer {
         return ipDetails;
     }
 
-    // -------------------------------------------------- //
+    // ------------------------- Analyze Packet File ------------------------- //
 
     async analyzePacketFile(filePath) {
         if (!filePath) {
