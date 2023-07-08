@@ -269,7 +269,7 @@ class PacketAnalyzer {
         return ipDetails;
     }
 
-    // -------------------------------------------------------- //
+    // ------------------------------------------------------ //
 
     async analyzePacketFile(filePath) {
         if (!filePath) {
