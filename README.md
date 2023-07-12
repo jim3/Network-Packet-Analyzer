@@ -154,6 +154,5 @@ Vist `http://localhost:3000/api/packet/data` to view the results of the last fil
         "is_proxy": false
       },
 
-`// ...etc...`
 ```
 
