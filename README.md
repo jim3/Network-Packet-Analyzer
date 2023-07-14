@@ -2,10 +2,12 @@
 
 The application analyzes exported Wireshark packets in JSON format. [see here](https://www.wireshark.org/docs/wsug_html_chunked/ChIOExportSection.html) Currently, it displays the following:
 
-1. IP location details (city, state, country)
+1. IP location details (city, state, country, etc...)
 2. List of unique IP addresses
 3. List of unique MAC addresses
 4. List of unique TCP & UDP port numbers
+5. DNS queries / answers
+6. HTTP request methods, user agent, etc..
 
 There is an HTML front-end (form) for the app at the root endpoint `/`. This allows you upload your exported json file. The server extracts the data and responds back to the client with JSON. I created another endpoint located at `/api/packet/data` that displays the results in HTML/EJS table format. Edit the functions in `packetAnalyzer.js` to get your own customized output.
 
