@@ -2,8 +2,6 @@ const fs = require("fs/promises");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// ------------------------- IP Addresses ------------------------- //
-
 class PacketAnalyzer {
     constructor() {}
     async ipAddresses(data) {
@@ -34,8 +32,6 @@ class PacketAnalyzer {
             console.log(error);
         }
     }
-
-    // ------------------------- DNS ------------------------- //
 
     async dns(data) {
         try {
@@ -79,8 +75,6 @@ class PacketAnalyzer {
         }
     }
 
-    // ------------------------- HTTP ------------------------- //
-
     async http(data) {
         try {
             data = await fs.readFile(data, "utf-8");
@@ -108,8 +102,6 @@ class PacketAnalyzer {
             console.log(error);
         }
     }
-
-    // ------------------------- MAC Addresses ------------------------- //
 
     async macAddresses(data) {
         try {
@@ -140,8 +132,6 @@ class PacketAnalyzer {
         }
     }
 
-    // ------------------------- UDP Ports ------------------------- //
-
     async udpPorts(data) {
         try {
             data = await fs.readFile(data, "utf-8");
@@ -171,8 +161,6 @@ class PacketAnalyzer {
         }
     }
 
-    // ------------------------- TCP Ports ------------------------- //
-
     async tcpPorts(data) {
         try {
             data = await fs.readFile(data, "utf-8");
@@ -201,8 +189,6 @@ class PacketAnalyzer {
             console.log(error);
         }
     }
-
-    // ------------------------- IP Details ------------------------- //
 
     async ipDetails(data) {
         data = await fs.readFile(data, "utf-8");
@@ -262,8 +248,6 @@ class PacketAnalyzer {
 
         return ipDetails;
     }
-
-    // ------------------------- Analyze Packet File ------------------------- //
 
     async analyzePacketFile(filePath) {
         if (!filePath) {
