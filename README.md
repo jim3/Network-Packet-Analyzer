@@ -9,9 +9,9 @@ The application analyzes exported Wireshark packets in JSON format. [see here](h
 5. DNS queries / answers
 6. HTTP request methods, user agent, etc..
 
-There is an HTML front-end (form) for the app at the root endpoint `/`. This allows you upload your exported json file. The server extracts the data and responds back to the client with JSON. I created another endpoint located at `/api/packet/data` that displays the results in HTML/EJS table format. Edit the functions in `packetAnalyzer.js` to get your own customized output.
+There is an HTML front-end for the app at the root endpoint `/`. This allows you upload your exported json file for parsing. The server code extracts the data and responds back to the client with JSON. I created an endpoint located at `/api/packet/data` that displays the results in HTML/EJS table format, `http://127.0.0.1/api/packet/data`. If you need customized output all you have to do is edit the functions inside `packetAnalyzer.js` file.
 
-[MongoDB Atlas](https://www.mongodb.com/atlas) is how the table gets populated. It reads from the last packet in the collection and Express renders it to the `/api/packet/data` endpoint. See examples of it at the bottom of the README.md
+I included [MongoDB Atlas](https://www.mongodb.com/atlas) into the full-stack app. It reads from the last packet in the collection and Express renders it to the `/api/packet/data` endpoint. See examples of it at the bottom of the README.md
 
 ## Getting Started
 
