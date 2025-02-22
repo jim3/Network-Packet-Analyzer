@@ -40,7 +40,7 @@ Capture some Wireshark packets, use a capture filter for better results:
 
 - Wireshark `host <YourIP> and not broadcast and not multicast and ip` then `File > Export Packet Dissections > As JSON`
 
-- TShark: `./tshark -i <interface> -T json -c 100 > <path to json file>`
+- TShark: `tshark -i <interface> -T json -c 100 > <path to json file>`
 
 
 Run the script
